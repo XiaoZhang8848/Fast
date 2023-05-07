@@ -5,11 +5,11 @@ namespace Fast.Core;
 
 public static class IServiceCollectionExtension
 {
-    private static readonly Stack<Type> _fastModuleTypes = new();
+    private static readonly List<Type> _fastModuleTypes = new();
 
     public static void AddModule<T>(this IServiceCollection services) where T : IFastModule
     {
-        _fastModuleTypes.Push(typeof(T));
+        _fastModuleTypes.Add(typeof(T));
         GetModules(typeof(T));
         foreach (var moduleType in _fastModuleTypes)
         {
@@ -27,7 +27,7 @@ public static class IServiceCollectionExtension
 
         foreach (var moduleType in moduleTypes)
         {
-            _fastModuleTypes.Push(moduleType);
+            _fastModuleTypes.Add(moduleType);
             GetModules(moduleType);
         }
     }

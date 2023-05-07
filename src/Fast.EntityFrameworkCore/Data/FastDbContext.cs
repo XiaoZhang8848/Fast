@@ -17,8 +17,7 @@ public class FastDbContext : DbContext
     {
     }
 
-    protected FastDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor,
-        IGeneratorSnowflakeId generatorSnowflakeId) : base(options)
+    protected FastDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor, IGeneratorSnowflakeId generatorSnowflakeId) : base(options)
     {
         _httpContextAccessor = httpContextAccessor;
         _generatorSnowflakeId = generatorSnowflakeId;
